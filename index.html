@@ -18,7 +18,6 @@
             color: #FFFDCE;
         }
 
-        /* Header & Navigation */
         header {
             background: linear-gradient(135deg, #F075AE 0%, #F7DB91 100%);
             color: #FFFDCE;
@@ -79,7 +78,6 @@
             opacity: 0.8;
         }
 
-        /* Mobile Menu Toggle */
         .menu-toggle {
             display: none;
             flex-direction: column;
@@ -94,11 +92,9 @@
             transition: 0.3s;
         }
 
-        /* ─── Contact Ticker Bar ─── */
         .contact-ticker-wrapper {
             position: fixed;
             top: 83px;
-            /* sits flush under the navbar */
             left: 0;
             width: 100%;
             z-index: 999;
@@ -109,13 +105,11 @@
             height: 36px;
             display: flex;
             align-items: center;
-            /* border-bottom: 1px solid rgba(255, 255, 255, 0.08); */
         }
 
         .contact-ticker {
             display: inline-flex;
             animation: tickerScroll 50s linear infinite;
-            /* duplicate content inside HTML so it loops seamlessly */
         }
 
         .contact-ticker:hover {
@@ -126,9 +120,9 @@
             display: inline-flex;
             align-items: center;
             gap: 0.45rem;
-            font-size: 0.82rem;
+            font-size: 1rem;
             font-weight: 500;
-            color: #FFFDCE;
+            color: #F7DB91;
             padding: 0 2.2rem;
             white-space: nowrap;
         }
@@ -138,13 +132,6 @@
             flex-shrink: 0;
         }
 
-        .ticker-item {
-            color: #F7DB91;
-            text-decoration: none;
-            font-size: 1rem;
-        }
-
-        /* thin separator between items */
         .ticker-sep {
             display: inline-block;
             width: 4px;
@@ -164,29 +151,138 @@
             }
         }
 
-        /* ─── End Ticker ─── */
-
-        /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, #F075AE 0%, #F7DB91 100%);
-            color: #FFFDCE;
-            padding: 185px 2rem 100px;
-            /* extra top padding to clear navbar + ticker */
-            text-align: center;
+            position: relative;
+            padding-top: 119px;
+            min-height: 100vh;
+            overflow: hidden;
         }
 
-        .hero h1 {
+        .carousel {
+            position: absolute;
+            inset: 0;
+            top: 119px;
+            width: 100%;
+            height: calc(100% - 119px);
+            overflow: hidden;
+        }
+
+        .carousel-track {
+            display: flex;
+            height: 100%;
+            transition: transform 0.6s ease-in-out;
+        }
+
+        .carousel-slide {
+            flex: 0 0 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .carousel-slide:nth-child(1) {
+            background-image: url("assets/hero.png");
+        }
+
+        .carousel-slide:nth-child(2) {
+            background-image: url("assets/hero1.jpeg");
+        }
+
+        .carousel-slide:nth-child(3) {
+            background-image: url("assets/hero2.jpeg");
+        }
+
+        .carousel-slide::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.35) 40%, rgba(0, 0, 0, 0.55) 100%);
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 3;
+            background: rgba(255, 255, 255, 0.22);
+            backdrop-filter: blur(4px);
+            border: none;
+            color: #fff;
+            font-size: 2rem;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+        }
+
+        .carousel-btn:hover {
+            background: rgba(255, 255, 255, 0.42);
+        }
+
+        .carousel-btn.prev {
+            left: 14px;
+        }
+
+        .carousel-btn.next {
+            right: 14px;
+        }
+
+        .carousel-dots {
+            position: absolute;
+            bottom: 28px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
+            display: flex;
+            gap: 10px;
+        }
+
+        .carousel-dot {
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .carousel-dot.active {
+            background: #fff;
+            transform: scale(1.3);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            height: calc(100vh - 119px);
+            padding: 2rem;
+        }
+
+        .hero-content h1 {
             font-size: 3rem;
             margin-bottom: 1rem;
+            color: #FFFDCE;
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
             animation: fadeInUp 0.8s ease-out;
         }
 
-        .hero p {
+        .hero-content p {
             font-size: 1.3rem;
             margin-bottom: 2rem;
             opacity: 0.95;
-            animation: fadeInUp 1s ease-out;
             color: #FFFDCE;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+            animation: fadeInUp 1s ease-out;
         }
 
         .cta-button {
@@ -205,9 +301,8 @@
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
 
-        /* Image Gallery Scrolling Section */
         .gallery {
-            padding: 80px 0;
+            padding: 80px 2rem;
             background: white;
             overflow: hidden;
         }
@@ -215,7 +310,6 @@
         .gallery-header {
             text-align: center;
             margin-bottom: 3rem;
-            padding: 0 2rem;
         }
 
         .gallery-header h2 {
@@ -230,38 +324,15 @@
             margin: 0 auto;
         }
 
-        .gallery-scroll {
-            display: flex;
-            justify-content: center;
-            overflow-x: auto;
-            scroll-behavior: smooth;
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
             gap: 2rem;
-            padding: 2rem;
-            scrollbar-width: none;
-            scrollbar-color: #0066cc #f0f0f0;
-        }
-
-        .gallery-scroll::-webkit-scrollbar {
-            height: 8px;
-        }
-
-        .gallery-scroll::-webkit-scrollbar-track {
-            background: #f0f0f0;
-            border-radius: 10px;
-        }
-
-        .gallery-scroll::-webkit-scrollbar-thumb {
-            background: #0066cc;
-            border-radius: 10px;
-        }
-
-        .gallery-scroll::-webkit-scrollbar-thumb:hover {
-            background: #0055aa;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .gallery-item {
-            flex: 0 0 auto;
-            width: 300px;
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
@@ -276,23 +347,32 @@
 
         .gallery-image {
             width: 100%;
-            height: 300px;
+            height: 280px;
             background: linear-gradient(135deg, #e0f2ff 0%, #b3d9ff 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 4rem;
-            position: relative;
             overflow: hidden;
+            position: relative;
+        }
+
+        .gallery-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
 
         .gallery-image::before {
             content: '';
             position: absolute;
+            inset: 0;
             width: 200%;
             height: 200%;
             background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.3) 50%, transparent 70%);
             animation: shimmer 3s infinite;
+            z-index: 1;
+            pointer-events: none;
         }
 
         @keyframes shimmer {
@@ -312,13 +392,14 @@
         .gallery-caption h3 {
             margin-bottom: 0.5rem;
             font-size: 1.2rem;
+            color: #9BC264;
         }
 
         .gallery-caption p {
             font-size: 0.9rem;
+            color: darkgray;
         }
 
-        /* Services Section */
         .services {
             padding: 80px 2rem;
             background: #f8f9fa;
@@ -337,7 +418,7 @@
 
         .service-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
         }
 
@@ -364,7 +445,6 @@
             color: #9BC264;
         }
 
-        /* Features Section */
         .features {
             padding: 80px 2rem;
             background: white;
@@ -393,7 +473,22 @@
             color: #00cc66;
         }
 
-        /* Process Section */
+        /* FSSAI Logo Styling */
+        .fssai-logo-container {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .fssai-logo {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
         .process {
             padding: 80px 2rem;
             background: #f8f9fa;
@@ -428,7 +523,6 @@
             margin: 0 auto 1rem;
         }
 
-        /* Contact Section */
         .contact {
             padding: 80px 2rem;
             background: white;
@@ -466,7 +560,6 @@
             gap: 0.5rem;
         }
 
-        /* Footer */
         footer {
             background: #1a1a1a;
             color: #FFFDCE;
@@ -513,7 +606,6 @@
             color: #888;
         }
 
-        /* Animations */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -526,7 +618,12 @@
             }
         }
 
-        /* ─── Responsive ─── */
+        @media (max-width: 1024px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
         @media (max-width: 768px) {
             .menu-toggle {
                 display: flex;
@@ -553,7 +650,6 @@
                 pointer-events: all;
             }
 
-            /* ticker stays the same height; just shrink text */
             .contact-ticker-wrapper {
                 top: 56px;
                 height: 32px;
@@ -565,14 +661,23 @@
             }
 
             .hero {
-                padding: 175px 1.5rem 80px;
+                padding-top: 88px;
             }
 
-            .hero h1 {
+            .carousel {
+                top: 88px;
+                height: calc(100% - 88px);
+            }
+
+            .hero-content {
+                height: calc(100vh - 88px);
+            }
+
+            .hero-content h1 {
                 font-size: 2rem;
             }
 
-            .hero p {
+            .hero-content p {
                 font-size: 1.3rem;
             }
 
@@ -584,12 +689,9 @@
                 font-size: 2rem;
             }
 
-            .gallery-item {
-                width: 250px;
-            }
-
-            .gallery-image {
-                height: 250px;
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                max-width: 400px;
             }
 
             .service-grid {
@@ -635,27 +737,29 @@
             }
 
             .hero {
-                padding: 160px 1rem 70px;
+                padding-top: 78px;
             }
 
-            .hero h1 {
+            .carousel {
+                top: 78px;
+                height: calc(100% - 78px);
+            }
+
+            .hero-content {
+                height: calc(100vh - 78px);
+                padding: 1rem;
+            }
+
+            .hero-content h1 {
                 font-size: 2rem;
             }
 
-            .hero p {
+            .hero-content p {
                 font-size: 1.3rem;
             }
 
             .section-title {
                 font-size: 1.8rem;
-            }
-
-            .gallery-item {
-                width: 220px;
-            }
-
-            .gallery-scroll {
-                padding: 1rem;
             }
         }
 
@@ -663,25 +767,15 @@
             .service-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-
-            .feature-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
         }
     </style>
 </head>
 
 <body>
-    <!-- Header -->
     <header>
         <nav>
-            <div class="logo">💧<span class="logo-text"> NeerIn</span>
-            </div>
-            <div class="menu-toggle" id="menuToggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+            <div class="logo">💧<span class="logo-text"> NeerIn</span></div>
+            <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#gallery">Gallery</a></li>
@@ -692,198 +786,158 @@
         </nav>
     </header>
 
-    <!-- Contact Info Ticker (scrolls left → right, loops seamlessly) -->
     <div class="contact-ticker-wrapper">
         <div class="contact-ticker" id="contactTicker">
-            <!-- First copy -->
-            <span class="ticker-item">
-                <span class="ticker-icon">👤</span> Manikant Chaturvedi
-            </span>
-            <span class="ticker-sep"></span>
-            <span class="ticker-item">
-                <span class="ticker-icon">📞</span> +91 6396727933
-            </span>
-            <span class="ticker-sep"></span>
-            <span class="ticker-item">
-                <span class="ticker-icon">📧</span> info@neerin.com
-            </span>
-            <span class="ticker-sep"></span>
-            <span class="ticker-item">
-                <span class="ticker-icon">📍</span> Military Colony, Rajpur, Vrindavan – 281121
-            </span>
-            <span class="ticker-sep"></span>
-            <span class="ticker-item">
-                <span class="ticker-icon">🕒</span> Mon–Sat: 9:00 AM – 6:00 PM
-            </span>
-            <span class="ticker-sep"></span>
-
-            <!-- Duplicate copy for seamless loop -->
-            <span class="ticker-item">
-                <span class="ticker-icon">👤</span> Manikant Chaturvedi
-            </span>
-            <span class="ticker-sep"></span>
-            <span class="ticker-item">
-                <span class="ticker-icon">📞</span> +91 6396727933
-            </span>
-            <span class="ticker-sep"></span>
-            <span class="ticker-item">
-                <span class="ticker-icon">📧</span> info@neerin.com
-            </span>
-            <span class="ticker-sep"></span>
-            <span class="ticker-item">
-                <span class="ticker-icon">📍</span> Military Colony, Rajpur, Vrindavan – 281121
-            </span>
-            <span class="ticker-sep"></span>
-            <span class="ticker-item">
-                <span class="ticker-icon">🕒</span> Mon–Sat: 9:00 AM – 6:00 PM
-            </span>
-            <span class="ticker-sep"></span>
-            <!-- Duplicate copy for seamless loop -->
-            <span class="ticker-item">
-                <span class="ticker-icon">👤</span> Manikant Chaturvedi
-            </span>
-            <span class="ticker-sep"></span>
-            <span class="ticker-item">
-                <span class="ticker-icon">📞</span> +91 6396727933
-            </span>
-            <span class="ticker-sep"></span>
-            <span class="ticker-item">
-                <span class="ticker-icon">📧</span> info@neerin.com
-            </span>
-            <span class="ticker-sep"></span>
-            <span class="ticker-item">
-                <span class="ticker-icon">📍</span> Military Colony, Rajpur, Vrindavan – 281121
-            </span>
-            <span class="ticker-sep"></span>
-            <span class="ticker-item">
-                <span class="ticker-icon">🕒</span> Mon–Sat: 9:00 AM – 6:00 PM
-            </span>
-            <span class="ticker-sep"></span>
+            <span class="ticker-item"><span class="ticker-icon">👤</span> Manikant Chaturvedi</span><span
+                class="ticker-sep"></span>
+            <span class="ticker-item"><span class="ticker-icon">📞</span> +91 6396727933</span><span
+                class="ticker-sep"></span>
+            <span class="ticker-item"><span class="ticker-icon">📧</span>  neerintraders@gmail.com</span><span
+                class="ticker-sep"></span>
+            <span class="ticker-item"><span class="ticker-icon">📍</span> Military Colony, Rajpur, Vrindavan –
+                281121</span><span class="ticker-sep"></span>
+            <span class="ticker-item"><span class="ticker-icon"></span> GSTIN:09CAKPC6563L1Z8</span><span
+                class="ticker-sep"></span>
+            <span class="ticker-item"><span class="ticker-icon">👤</span> Manikant Chaturvedi</span><span
+                class="ticker-sep"></span>
+            <span class="ticker-item"><span class="ticker-icon">📞</span> +91 6396727933</span><span
+                class="ticker-sep"></span>
+            <span class="ticker-item"><span class="ticker-icon">📧</span>  neerintraders@gmail.com</span><span
+                class="ticker-sep"></span>
+            <span class="ticker-item"><span class="ticker-icon">📍</span> Military Colony, Rajpur, Vrindavan –
+                281121</span><span class="ticker-sep"></span>
+            <span class="ticker-item"><span class="ticker-icon"></span> GSTIN:09CAKPC6563L1Z8</span><span
+                class="ticker-sep"></span>
+            <span class="ticker-item"><span class="ticker-icon">👤</span> Manikant Chaturvedi</span><span
+                class="ticker-sep"></span>
+            <span class="ticker-item"><span class="ticker-icon">📞</span> +91 6396727933</span><span
+                class="ticker-sep"></span>
+            <span class="ticker-item"><span class="ticker-icon">📧</span>  neerintraders@gmail.com</span><span
+                class="ticker-sep"></span>
+            <span class="ticker-item"><span class="ticker-icon">📍</span> Military Colony, Rajpur, Vrindavan –
+                281121</span><span class="ticker-sep"></span>
+            <span class="ticker-item"><span class="ticker-icon"></span> GSTIN:09CAKPC6563L1Z8</span><span
+                class="ticker-sep"></span>
         </div>
     </div>
 
-    <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="container">
+        <div class="carousel">
+            <div class="carousel-track" id="carouselTrack">
+                <div class="carousel-slide"></div>
+                <div class="carousel-slide"></div>
+                <div class="carousel-slide"></div>
+            </div>
+            <button class="carousel-btn prev" id="prevBtn">&#8249;</button>
+            <button class="carousel-btn next" id="nextBtn">&#8250;</button>
+            <div class="carousel-dots">
+                <button class="carousel-dot active" data-index="0"></button>
+                <button class="carousel-dot" data-index="1"></button>
+                <button class="carousel-dot" data-index="2"></button>
+            </div>
+        </div>
+        <div class="hero-content">
             <h1>Premium Water Bottle Labeling Solutions</h1>
             <p>Custom, high-quality labels that make your brand stand out</p>
             <a href="#contact" class="cta-button brand-col">Get Started Today</a>
         </div>
     </section>
 
-    <!-- Image Gallery Section -->
     <section id="gallery" class="gallery">
         <div class="gallery-header">
             <h2 class="brand-col">Our Label Designs</h2>
             <p>Explore our portfolio of stunning water bottle labels crafted for brands across industries</p>
         </div>
-        <div class="gallery-scroll brand-col">
+        <div class="gallery-grid">
             <div class="gallery-item">
-                <div class="gallery-image"><img src="assets/label.png" height="400px"></div>
+                <div class="gallery-image"><img src="assets/200.png" alt="250ml Water Bottle"></div>
                 <div class="gallery-caption">
-                    <h3>Classic Blue</h3>
+                    <h3>Classic 250ml</h3>
                     <p>Elegant minimalist design for premium spring water</p>
                 </div>
             </div>
             <div class="gallery-item">
-                <div class="gallery-image"><img src="assets/2ltr.png" height="260px"></div>
+                <div class="gallery-image"><img src="assets/500.png" alt="500ml Water Bottle"></div>
                 <div class="gallery-caption">
-                    <h3>Ocean Wave</h3>
+                    <h3>Ocean 500ml</h3>
                     <p>Dynamic flowing design with metallic finish</p>
                 </div>
             </div>
             <div class="gallery-item">
-                <div class="gallery-image">🏔️</div>
+                <div class="gallery-image"><img src="assets/1000.png" alt="1 Ltr Water Bottle"></div>
                 <div class="gallery-caption">
-                    <h3>Mountain Fresh</h3>
+                    <h3>Mountain Fresh 1 Ltr</h3>
                     <p>Nature-inspired label with embossed texture</p>
                 </div>
             </div>
             <div class="gallery-item">
-                <div class="gallery-image">🌿</div>
+                <div class="gallery-image"><img src="assets/2ltr.png" alt="2 Ltr Water Bottle"></div>
                 <div class="gallery-caption">
-                    <h3>Eco Pure</h3>
+                    <h3>Eco Pure 2 Ltr</h3>
                     <p>100% biodegradable label with green theme</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
     <section id="services" class="services">
         <div class="container">
             <h2 class="section-title brand-col">Our Services</h2>
             <div class="service-grid brand-col">
                 <div class="service-card">
-                    <div class="service-icon">🏷️</div>
-                    <h3>Custom Label Design</h3>
-                    <p>Professional graphic design services tailored to your brand identity. We create eye-catching
-                        labels that showcase your unique style.</p>
+                    <div class="service-icon">🎉</div>
+                    <h3>Event Labeling</h3>
+                    <p>Make your special moments even more memorable with custom-labeled water bottles. Perfect for
+                        weddings, concerts, birthday parties, corporate events, and any celebration. Add a personal
+                        touch with names, dates, or event themes tailored just for you.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">🖨️</div>
-                    <h3>High-Quality Printing</h3>
-                    <p>State-of-the-art printing technology ensures vibrant colors and crisp text on every label, even
-                        in large-volume orders.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">♻️</div>
-                    <h3>Eco-Friendly Materials</h3>
-                    <p>Choose from our range of sustainable, biodegradable, and recyclable label materials that align
-                        with your environmental values.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">⚡</div>
-                    <h3>Fast Turnaround</h3>
-                    <p>Rush orders available! We understand deadlines and work efficiently to deliver your labels when
-                        you need them.</p>
+                    <div class="service-icon">🏢</div>
+                    <h3>Brand Labeling</h3>
+                    <p>Strengthen your identity with premium branded water bottles for your restaurant, café, hotel, or
+                        company. We design eye-catching labels that match your logo, colors, and style — giving your
+                        brand a professional and polished look every time.</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">📦</div>
                     <h3>Bulk Orders</h3>
-                    <p>Competitive pricing for large quantities. Perfect for events, corporate branding, and product
-                        launches.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">💎</div>
-                    <h3>Premium Finishes</h3>
-                    <p>Add special touches like foil stamping, embossing, matte or gloss finishes to make your labels
-                        truly premium.</p>
+                    <p>Planning to sell your own branded water? We offer affordable bulk labeling for self-sellers and
+                        resellers. Get high-quality, waterproof labels in large quantities at competitive prices — ready
+                        to stock your shop, stall, or online store.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Features Section -->
     <section class="features">
         <div class="container brand-col">
             <h2 class="section-title">Why Choose Us?</h2>
             <div class="feature-grid">
                 <div class="feature-item">
-                    <div class="checkmark">✓</div>
+                    <div class="fssai-logo-container">
+                        <img src="assets/waterproof.png" alt="FSSAI Logo" class="fssai-logo">
+                    </div>
                     <h4>Waterproof Labels</h4>
-                    <p>Durable materials that withstand moisture and condensation</p>
+                    <p>Registered &amp; Durable materials that withstand moisture and condensation</p>
                 </div>
                 <div class="feature-item">
-                    <div class="checkmark">✓</div>
-                    <h4>FDA Compliant</h4>
-                    <p>All materials meet food safety standards</p>
-                </div>
-                <div class="feature-item">
-                    <div class="checkmark">✓</div>
+                    <div class="fssai-logo-container">
+                        <img src="assets/custom.png" alt="FSSAI Logo" class="fssai-logo">
+                    </div>
                     <h4>Custom Sizes</h4>
-                    <p>Any shape or size to fit your bottles perfectly</p>
+                    <p>Registered &amp; Any shape or size to fit your bottles perfectly</p>
                 </div>
                 <div class="feature-item">
-                    <div class="checkmark">✓</div>
-                    <h4>Quick Proofs</h4>
-                    <p>See digital previews before printing</p>
+                    <div class="fssai-logo-container">
+                        <img src="assets/fssai.png" alt="FSSAI Logo" class="fssai-logo">
+                    </div>
+                    <h4>FSSAI Certified</h4>
+                    <p>Registered &amp; compliant with FSSAI food labeling norms and standards</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Process Section -->
     <section id="process" class="process">
         <div class="container brand-col">
             <h2 class="section-title">Our Simple Process</h2>
@@ -917,7 +971,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer id="contact">
         <div class="footer-content">
             <div class="footer-section">
@@ -939,8 +992,9 @@
                 <ul>
                     <li>👤 Manikant Chaturvedi</li>
                     <li>📞 +91 6396727933</li>
-                    <li>📧 info@neerin.com</li>
+                    <li>📧  neerintraders@gmail.com</li>
                     <li>📍 Military Colony, Rajpur, Vrindavan - 281121</li>
+                    <li>GSTIN: 09CAKPC6563L1Z8</li>
                 </ul>
             </div>
         </div>
@@ -950,47 +1004,41 @@
     </footer>
 
     <script>
-        // Mobile menu toggle
+        (function () {
+            const track = document.getElementById('carouselTrack');
+            const dots = document.querySelectorAll('.carousel-dot');
+            const total = 3;
+            let current = 0, timer;
+            function goTo(i) {
+                current = i;
+                track.style.transform = 'translateX(-' + (i * 100) + '%)';
+                dots.forEach((d, idx) => d.classList.toggle('active', idx === i));
+            }
+            document.getElementById('prevBtn').onclick = () => { goTo((current - 1 + total) % total); reset(); };
+            document.getElementById('nextBtn').onclick = () => { goTo((current + 1) % total); reset(); };
+            dots.forEach(d => d.onclick = () => { goTo(+d.dataset.index); reset(); });
+            function start() { timer = setInterval(() => goTo((current + 1) % total), 4000); }
+            function reset() { clearInterval(timer); start(); }
+            start();
+        })();
+
         const menuToggle = document.getElementById('menuToggle');
         const navLinks = document.getElementById('navLinks');
+        menuToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
+        document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('active')));
 
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-
-        // Close menu when clicking on a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-            });
-        });
-
-        // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
+                const t = document.querySelector(this.getAttribute('href'));
+                if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
             });
         });
 
-        // Add scroll animation to gallery items
         const galleryObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animation = 'fadeInUp 0.6s ease-out forwards';
-                }
-            });
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.style.animation = 'fadeInUp 0.6s ease-out forwards'; });
         }, { threshold: 0.1 });
-
-        document.querySelectorAll('.gallery-item').forEach(item => {
-            galleryObserver.observe(item);
-        });
+        document.querySelectorAll('.gallery-item').forEach(item => galleryObserver.observe(item));
     </script>
 </body>
 
